@@ -1,16 +1,25 @@
-import ray
 import pandas as pd
 import time
 import random
+
+try:
+    import ray
+except:
+    ray = None
 
 def build_distance_dict(distance_matrix):
     """Converts the pandas dataframe into an O(1) lookup dictionary."""
     return distance_matrix.set_index(['origin_branch', 'destination_branch'])['distance_km'].to_dict()
 
-@ray.remote
-def optimize_region_cluster_parallel(region_name, requests_df, trucks_list, dist_dict):
-    """Ray worker wrapper for parallel execution."""
-    return _optimize_region_core(region_name, requests_df, trucks_list, dist_dict)
+if ray:
+    @ray.remote
+    def optimize_region_cluster_parallel(region_name, requests_df, trucks_list, dist_dict):
+        """Ray worker wrapper for parallel execution."""
+        return _optimize_region_core(region_name, requests_df, trucks_list, dist_dict)
+else:
+    def optimize_region_cluster_parallel(region_name, requests_df, trucks_list, dist_dict):
+        """Fallback function when Ray is not available."""
+        return _optimize_region_core(region_name, requests_df, trucks_list, dist_dict)
 
 def _optimize_region_core(region_name, requests_df, trucks_list, dist_dict):
     """Core routing logic: Cost-based assignment + Nearest Neighbor Sequencing."""
@@ -95,7 +104,11 @@ class RoutingEngine:
         return pd.DataFrame(results), elapsed
 
     def execute_parallel(self):
-        """Data-parallel execution using Ray."""
+        """Data-parallel execution using Ray (or sequential if Ray unavailable)."""
+        if not ray:
+            # Fallback to sequential if Ray is not available
+            return self.execute_sequential()
+        
         start_time = time.time()
         regions = self.requests['region'].unique()
         futures = []

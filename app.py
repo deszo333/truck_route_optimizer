@@ -3,14 +3,18 @@ import time
 import pandas as pd
 import numpy as np
 import random
-import ray
 from src.data_processor import DataProcessor
 from src.routing_engine import RoutingEngine, build_distance_dict
 from src.dynamic_updater import inject_urgent_request
 
 # Initialize Ray safely
-if not ray.is_initialized():
-    ray.init(ignore_reinit_error=True)
+try:
+    import ray
+    if not ray.is_initialized():
+        ray.init(ignore_reinit_error=True)
+    USE_RAY = True
+except:
+    USE_RAY = False
 
 # ─────────────────────────────────────────────
 #  PAGE CONFIG & GLOBAL STYLES
@@ -875,16 +879,25 @@ if run_course:
 
 # ── 1. BENCHMARK MODE ──
 if run_engine:
-    st.info("Benchmarking Sequential vs. Parallel execution...")
+    if USE_RAY:
+        st.info("Benchmarking Sequential vs. Parallel execution...")
+    else:
+        st.warning("⚠️ Ray not available - running Sequential mode only")
+    
     engine = RoutingEngine(requests, trucks, dist_matrix)
     _, seq_time = engine.execute_sequential()
-    optimized_routes, par_time = engine.execute_parallel()
+    
+    if USE_RAY:
+        optimized_routes, par_time = engine.execute_parallel()
+    else:
+        optimized_routes, par_time = engine.execute_sequential()
+    
     speedup = seq_time / par_time if par_time > 0 else 1
     st.session_state['routes'] = optimized_routes
     st.success("✅ Fleet Optimization Complete!")
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Sequential Time",     f"{seq_time:.3f} s")
-    col2.metric("Parallel (Ray) Time", f"{par_time:.3f} s")
+    col2.metric("Parallel" + (" (Ray)" if USE_RAY else " (Fallback)") + " Time", f"{par_time:.3f} s")
     col3.metric("Speedup Factor",      f"{speedup:.2f}x")
     col4.metric("Total Distance (km)", f"{optimized_routes['estimated_distance_km'].sum():.1f}")
     st.subheader("Optimized Dispatch Plan")
