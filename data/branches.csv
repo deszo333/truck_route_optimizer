@@ -1,0 +1,51 @@
+branch_id,branch_name,city,region,capacity_sqm
+BR-000,Branch 0,Quezon City,Luzon,4037
+BR-001,Branch 1,Iloilo,Luzon,1914
+BR-002,Branch 2,Cebu,Mindanao,1419
+BR-003,Branch 3,Baguiio,Luzon,3418
+BR-004,Branch 4,Cagayan de Oro,Luzon,1122
+BR-005,Branch 5,Quezon City,Luzon,1952
+BR-006,Branch 6,Baguiio,Mindanao,1108
+BR-007,Branch 7,Baguiio,Luzon,3932
+BR-008,Branch 8,Baguiio,Visayas,1902
+BR-009,Branch 9,Zamboanga,Mindanao,2139
+BR-010,Branch 10,Manila,Luzon,3859
+BR-011,Branch 11,Cagayan de Oro,Visayas,2138
+BR-012,Branch 12,Cebu,Luzon,4920
+BR-013,Branch 13,Bacolod,Luzon,1379
+BR-014,Branch 14,Cagayan de Oro,Luzon,2470
+BR-015,Branch 15,Bacolod,Mindanao,2083
+BR-016,Branch 16,Manila,Mindanao,2881
+BR-017,Branch 17,Baguiio,Luzon,4985
+BR-018,Branch 18,Cagayan de Oro,Luzon,3261
+BR-019,Branch 19,Iloilo,Mindanao,3533
+BR-020,Branch 20,Bacolod,Mindanao,1787
+BR-021,Branch 21,Quezon City,Luzon,3708
+BR-022,Branch 22,Davao,Visayas,1326
+BR-023,Branch 23,Davao,Luzon,2556
+BR-024,Branch 24,Iloilo,Visayas,3603
+BR-025,Branch 25,Bacolod,Luzon,2516
+BR-026,Branch 26,Bacolod,Luzon,3745
+BR-027,Branch 27,Iloilo,Mindanao,4836
+BR-028,Branch 28,Quezon City,Mindanao,3600
+BR-029,Branch 29,Cebu,Mindanao,3986
+BR-030,Branch 30,Davao,Luzon,2893
+BR-031,Branch 31,Cagayan de Oro,Visayas,4790
+BR-032,Branch 32,Baguiio,Luzon,3804
+BR-033,Branch 33,Bacolod,Luzon,1938
+BR-034,Branch 34,Manila,Visayas,2643
+BR-035,Branch 35,Iloilo,Luzon,1864
+BR-036,Branch 36,Batangas,Mindanao,2288
+BR-037,Branch 37,Davao,Mindanao,3044
+BR-038,Branch 38,Cagayan de Oro,Mindanao,2879
+BR-039,Branch 39,Cebu,Visayas,1571
+BR-040,Branch 40,Davao,Mindanao,3299
+BR-041,Branch 41,Baguiio,Visayas,4059
+BR-042,Branch 42,Batangas,Visayas,4677
+BR-043,Branch 43,Batangas,Visayas,2482
+BR-044,Branch 44,Davao,Luzon,3087
+BR-045,Branch 45,Zamboanga,Luzon,4095
+BR-046,Branch 46,Manila,Luzon,1626
+BR-047,Branch 47,Cebu,Mindanao,2729
+BR-048,Branch 48,Batangas,Luzon,2576
+BR-049,Branch 49,Cagayan de Oro,Mindanao,2917
