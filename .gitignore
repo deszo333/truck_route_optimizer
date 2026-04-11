@@ -1,2 +1,39 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
 venv/
-venv
+env/
+ENV/
+
+# Streamlit local settings and secrets
+.streamlit/secrets.toml
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
